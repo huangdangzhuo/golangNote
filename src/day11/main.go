@@ -54,60 +54,7 @@ import (
 		fmt.Println()
 	}
 }*/
-// func main() {
-// 	var phone string
-// 	phone = "13412345678"
-// 	newPhone := phone[:3] + "****" + phone[7:]
-// 	fmt.Println(newPhone)
-// }
-// User 用户结构体
 
-// type Test struct {
-// 	Name string `json:"-"`             // “-”作用是不进行序列化，效果和将结构体字段写成小写一样。
-// 	Age  int    `json:"age,omitempty"` // “omitempty”作用是在序列化的时候忽略0值或空值。
-// 	Id   int    `json:"idx,string"`    // 序列化时，类型转化为string
-// 	Sex  string `json:"sex"`
-// }
-
-// func main() {
-//     // 反射
-// 	test := Test{"kitty", 18, 61, "female"}
-//
-// 	// 通过反射，我们获取变量的动态类型
-// 	reType := reflect.TypeOf(test)
-// 	reVal := reflect.ValueOf(test)
-// 	fmt.Println(reVal.FieldByName("Sex"))
-// 	fmt.Println("Type:", reType.Name())
-// 	fmt.Println("Kind:", reType.Kind())
-//
-// 	for i := 0; i < reType.NumField(); i++ {
-// 		field := reType.Field(i) // 获取结构体的每一个字段
-// 		tag := field.Tag.Get("json")
-// 		fmt.Printf("%d. %v(%v):%v, TAG:'%v'\n",
-// 			i+1, field.Name, field.Type, reVal.Field(i), tag)
-// 	}
-// }
-
-// func main() {
-// 	// 反射
-// 	type Message struct {
-// 		Name string `json:"msg_name"`       // 对应JSON的msg_name
-// 		Body string `json:"body,omitempty"` // 如果为空置则忽略字段
-// 		Time int64  `json:"-"`              // 直接忽略字段
-// 	}
-// 	var m = Message{
-// 		Name: "Alice",
-// 		Body: "0",
-// 		Time: 1294706395881547000,
-// 	}
-// 	data, err := json.Marshal(m)
-// 	if err != nil {
-// 		fmt.Printf(err.Error())
-// 		return
-// 	}
-// 	str := string(data)
-// 	fmt.Println(str)
-// }
 type WeekDate struct {
 	WeekTh    string
 	StartTime time.Time
@@ -307,7 +254,7 @@ func main() {
 	secret := "73u4qv497d1tg0jz0w531kmbnpi31hmu"
 	timestamp := strconv.FormatInt(time.Now().UnixNano()/1e6, 10)
 
-	body := "[{\"salesWx\":\"wxid_g2paz7qxp8ut12\",\"wechatNumber\":\"wxid_g3dz6d5f0wlp22\"},{\"salesWx\":\"wxid_g2paz7qxp8ut12\",\"wechatNumber\":\"2121\"},{\"salesWx\":\"wxid_g2paz7qxp8ut12\",\"wechatNumber\":\"wxid_txuo4kfaxatn22\"}]"
+	body := "{\"startTime\":\"2020-10-20 00:00:00\",\"endTime\":\"2020-10-20 23:59:59\"}"
 	fmt.Println(timestamp)
 	//fmt.Println(string(bodyStr))
 	str := fmt.Sprintf("%v%v%v%v", appID, timestamp, body, secret)
@@ -329,9 +276,6 @@ func main() {
 
 }
 
-// sm_app_id = "si_xzkj0620"
-// # sm 密钥
-// sm_secret = "73u4qv497d1tg0jz0w531kmbnpi31hmu"
 
 // func main() {
 // 	var (
@@ -358,155 +302,3 @@ func main() {
 // 	c = tmpnum1 + tmpnum2
 // 	fmt.Printf("第3次 c=%d\n", c) // 第3次 c=255
 // }
-
-type stu struct {
-	sss int
-	ddd int
-}
-
-// func main() {
-// 	a := &stu{
-// 		sss: 2,
-// 		ddd: 4,
-// 	}
-// 	b := &stu{
-// 		sss: 1,
-// 		ddd: 4,
-// 	}
-// 	if a.sss > b.sss {
-// 		fmt.Println(1111)
-// 	} else {
-// 		fmt.Println(2222)
-// 	}
-// }
-//
-// func main() {
-// 	IsWork := 0
-// 	startTime,_ := dateStringToTime("2020-01-02 18:00:00", true)
-// 	workStartTime, _ := dateStringToTime(startTime.Format("2006-01-02")+" 08:59:59", true)
-//
-// 	workEndTime, _ := dateStringToTime(startTime.Format("2006-01-02")+" 18:00:01", true)
-//
-// 	if workStartTime.Before(startTime) && workEndTime.After(startTime) {
-// 		IsWork = 1
-// 	} else {
-// 		IsWork = 2
-// 	}
-//
-// 	fmt.Println(IsWork)
-//
-// }
-
-// func main() {
-// 	var countryCapitalMap map[string]string /*创建集合 */
-// 	countryCapitalMap = make(map[string]string)
-//
-// 	/* map插入key - value对,各个国家对应的首都 */
-// 	countryCapitalMap [ "France" ] = "巴黎"
-// 	countryCapitalMap [ "Italy" ] = "罗马"
-// 	countryCapitalMap [ "Japan" ] = "东京"
-// 	countryCapitalMap [ "India " ] = "新德里"
-//
-// 	/*使用键输出地图值 */
-// 	for country := range countryCapitalMap {
-// 		fmt.Println(country, "首都是", countryCapitalMap [country])
-// 	}
-//
-// 	fmt.Println(len(countryCapitalMap))
-// }
-/**
- * 二个时间戳是否同一天
- * @return true 是 false 不是今天
- */
-
-type Unix struct {
-	Val int64
-}
-
-func (u *Unix) IsSameDay(another *Unix) bool {
-	tm := time.Unix(u.Val, 0)
-	tmAnother := time.Unix(another.Val, 0)
-
-	if tmAnother.Day() == tm.Day() {
-		return true
-	}
-	return false
-}
-
-// 定义User类型结构
-type User struct {
-	Id       int    `json:"id"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
-var users []User
-
-// func main() {
-// 	// 1.操作数据库
-// 	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/qianmaiapi?charset=utf8mb4&parseTime=True&loc=Local&allowNativePasswords=true")
-// 	// 错误检查
-// 	if err != nil {
-// 		log.Fatal(err.Error())
-// 	}
-// 	// 推迟数据库连接的关闭
-// 	defer db.Close()
-//
-// 	// 2.查询
-// 	rows, err := db.Query("SELECT id, user_name, password FROM g_user")
-// 	if err != nil {
-// 		log.Fatal(err.Error())
-// 	}
-//
-// 	for rows.Next() {
-// 		var user User
-// 		// 遍历表中所有行的信息
-// 		rows.Scan(&user.Id, &user.Username, &user.Password)
-// 		// 将user添加到users中
-// 		users = append(users, user)
-// 	}
-// 	// 最后关闭连接
-// 	defer rows.Close()
-//
-// 	fmt.Println(users)
-// 	return
-//
-// }
-// 重新拼接时间字符串
-func afreshTimeStr(timeArr []string) string {
-	// 拼接年份
-	timeStr := timeArr[0]
-	// 拼接月份
-	timeStr += "-"
-	if len([]byte(timeArr[1])) == 1 {
-		timeStr += "0"
-	}
-	timeStr += timeArr[1]
-
-	// 拼接日
-	timeStr += "-"
-	if len([]byte(timeArr[2])) == 1 {
-		timeStr += "0"
-	}
-	timeStr += timeArr[2]
-	// 拼接时间
-	timeStr += " 00:00:00"
-
-	return timeStr
-}
-
-//func main() {
-//	 PayTimeKey :=""
-//	payTime := strings.Replace("2020/8/20", "\t", "", -1)
-//	if strings.Contains(payTime, "/") {
-//		payTimeArr := strings.Split(payTime, "/")
-//		PayTimeKey =  afreshTimeStr(payTimeArr)
-//		fmt.Println()
-//	}
-//
-//	a, err := dateStringToTime(strings.Replace(PayTimeKey, "\t", "", -1), true)
-//	if err != nil {
-//		fmt.Println(err)
-//	}
-//	fmt.Println(a)
-//}

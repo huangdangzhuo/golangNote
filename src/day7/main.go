@@ -1,10 +1,7 @@
 package main
 
 import (
-	"crypto/md5"
-	"fmt"
 	"log"
-	"strconv"
 	"sync"
 	"time"
 )
@@ -95,15 +92,4 @@ func unique(m []int64) []int64 {
 
 	return s
 
-}
-
-func main() {
-	body := []byte("{\"startTime\": \"2020-10-14 00:00:00\",\"endTime\": \"2020-10-15 23:59:59\"}")
-	appID := "si_xzkj0620"
-	secret := "73u4qv497d1tg0jz0w531kmbnpi31hmu"
-	timestamp := strconv.FormatInt(time.Now().UnixNano()/1e6, 10)
-	fmt.Println(timestamp)
-	str := fmt.Sprintf("%v%v%v%v", appID, timestamp, body, secret)
-	sign := fmt.Sprintf("%x", md5.Sum([]byte(str)))
-	fmt.Println(sign)
 }

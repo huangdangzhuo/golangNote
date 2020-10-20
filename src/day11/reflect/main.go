@@ -6,6 +6,12 @@ import (
 )
 
 ///////////////////////// 反射 /////////////////////////
+type Test struct {
+	Name string `json:"-"`             // “-”作用是不进行序列化，效果和将结构体字段写成小写一样。
+	Age  int    `json:"age,omitempty"` // “omitempty”作用是在序列化的时候忽略0值或空值。
+	Id   int    `json:"idx,string"`    // 序列化时，类型转化为string
+	Sex  string `json:"sex"`
+}
 // Student 学生结构体
 type Student struct {
 	Name    string
