@@ -1,0 +1,7 @@
+/bin
+.gitignore
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/test.iml
+.idea/vcs.xml
