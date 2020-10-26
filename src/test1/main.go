@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
 )
@@ -235,24 +234,20 @@ type SmCustomerInfoExportByTimeDatas []SmCustomerInfoExportByTimeData
 
 func main() {
 
-	body := []byte("{\"code\":0,\"message\":\"success\",\"data\":[{\"birthday\":\"\",\"salesAccount\":\"XN70014\",\"wechatComment\":\"vip 环深 中珠海😉🎀190505\",\"wechatAlias\":null,\"sex\":null,\"salesWx\":\"wxid_0w2uj547nmyk12\",\"wechatNickname\":\"💫梦宇🍑🌝\",\"real_name\":null,\"wechatNumber\":\"dongmengyu29\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70023\",\"wechatComment\":\"20.10.14💫梦宇🍑🌝\",\"wechatAlias\":null,\"sex\":null,\"salesWx\":\"wxid_0qfsnvf9ow8b22\",\"wechatNickname\":\"💫梦宇🍑🌝\",\"real_name\":null,\"wechatNumber\":\"dongmengyu29\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":null,\"wechatComment\":\"181219彩云\",\"wechatAlias\":null,\"sex\":null,\"salesWx\":\"wxid_g2paz7qxp8ut12\",\"wechatNickname\":\"彩云\",\"real_name\":null,\"wechatNumber\":\"wxid_jy002xhy79pg22\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70014\",\"wechatComment\":\"19.01.17  低南沙 诊断意向\",\"wechatAlias\":null,\"sex\":null,\"salesWx\":\"wxid_61kijkrnuo7l12\",\"wechatNickname\":\"彩云\",\"real_name\":null,\"wechatNumber\":\"wxid_jy002xhy79pg22\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70023\",\"wechatComment\":\"190717彩云\",\"wechatAlias\":null,\"sex\":null,\"salesWx\":\"wxid_vhbxkxiclg6622\",\"wechatNickname\":\"彩云\",\"real_name\":null,\"wechatNumber\":\"wxid_jy002xhy79pg22\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70024\",\"wechatComment\":\"20.10.14彩云\",\"wechatAlias\":null,\"sex\":null,\"salesWx\":\"wxid_z2a2pyxey7sy22\",\"wechatNickname\":\"彩云\",\"real_name\":null,\"wechatNumber\":\"wxid_jy002xhy79pg22\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70020\",\"wechatComment\":null,\"wechatAlias\":\"A13266136628\",\"sex\":null,\"salesWx\":\"wxid_39o439zpjj2p22\",\"wechatNickname\":\"淡雅如菊\",\"real_name\":null,\"wechatNumber\":\"wxid_oh5873lpc7k622\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70023\",\"wechatComment\":\"高惠阳淡雅如菊\",\"wechatAlias\":\"A13266136628\",\"sex\":null,\"salesWx\":\"wxid_0qfsnvf9ow8b22\",\"wechatNickname\":\"淡雅如菊\",\"real_name\":null,\"wechatNumber\":\"wxid_oh5873lpc7k622\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70015\",\"wechatComment\":\"20.10.14淡雅如菊\",\"wechatAlias\":\"A13266136628\",\"sex\":null,\"salesWx\":\"wxid_swmjvfpdw97p12\",\"wechatNickname\":\"淡雅如菊\",\"real_name\":null,\"wechatNumber\":\"wxid_oh5873lpc7k622\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70024\",\"wechatComment\":null,\"wechatAlias\":null,\"sex\":null,\"salesWx\":\"wxid_z2a2pyxey7sy22\",\"wechatNickname\":\"不叮点\",\"real_name\":null,\"wechatNumber\":\"wangdongnevison\",\"age2\":null,\"phone1\":null},{\"birthday\":\"\",\"salesAccount\":\"XN70020\",\"wechatComment\":\"20.10.02🍃caterpillar🍃\",\"wechatAlias\":\"Caterpillar658865\",\"sex\":null,\"salesWx\":\"wxid_39o439zpjj2p22\",\"wechatNickname\":\"🍃caterpillar🍃\",\"real_name\":null,\"wechatNumber\":\"liuting658865\",\"age2\":null,\"phone1\":null}]}")
+	//for _, v := range item.Data {
+	//	tags := []string{"低", "中", "高"}
+	//	areas := []string{"惠阳", "南沙", "清远", "珠海"}
+	//	for _, tag := range tags {
+	//		for _, area := range areas {
+	//			if v.WechatComment != "" && strings.Contains(v.WechatComment, tag+area) {
+	//				fmt.Println(v.WechatComment)
+	//			}
+	//		}
+	//	}
+	//}
 
-	// 解析response
-	var item SmCustomerInfoExportByTimeResponse
-	if err := json.Unmarshal(body, &item); err != nil {
-		fmt.Println(err)
-	}
+	str := "首套自住,投资机会,环深投资,珠海投资,清远投资"
 
-	for _, v := range item.Data {
-		tags := []string{"低", "中", "高"}
-		areas := []string{"惠阳", "南沙", "清远", "珠海"}
-		for _, tag := range tags {
-			for _, area := range areas {
-				if v.WechatComment != "" && strings.Contains(v.WechatComment, tag+area) {
-					fmt.Println(v.WechatComment)
-				}
-			}
-		}
-	}
+	fmt.Println(strings.Contains(str, "珠海投资1"))
 
 }
