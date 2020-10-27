@@ -1,11 +1,8 @@
 package main
 
-import (
-	"fmt"
-)
 // Strategy 策略类接口
 type Strategy interface {
-	DoDperation(num1,num2 int) int
+	DoOperation(num1, num2 int) int
 }
 
 // OperationAdd 加法策略类
@@ -17,29 +14,51 @@ func NewOperationAdd() *OperationAdd {
 	return &OperationAdd{}
 }
 
-// DoOperationAdd
-func (c *Circle) Draw() {
-	fmt.Println("Circle Draw method.")
+// DoOperation 执行策略操作
+func (add *OperationAdd) DoOperation(num1, num2 int) int {
+	return num1 + num2
 }
 
-// RedShapeDecorator 红色装饰器
-type RedShapeDecorator struct {
-	DecoratedShape Shape
+// OperationSubtract 减法策略类
+type OperationSubtract struct {
 }
 
-// NewRedShapeDecorator 实例化红色装饰器
-func NewRedShapeDecorator(decShape Shape) *RedShapeDecorator {
-	return &RedShapeDecorator{DecoratedShape: decShape,
-	}
+// NewOperationSubtract 实例化减法策略类
+func NewOperationSubtract() *OperationSubtract {
+	return &OperationSubtract{}
 }
 
-// SetRedBorder 装饰器方法
-func (rs *RedShapeDecorator) SetRedBorder()  {
-	fmt.Println("Border Color:red")
+// DoOperation 减法策略类执行的操作
+func (sub *OperationSubtract) DoOperation(num1, num2 int) int {
+	return num1 - num2
 }
 
-// Draw 实现Shape接口的方法
-func (rs *RedShapeDecorator) Draw()  {
-	rs.DecoratedShape.Draw()
-	rs.SetRedBorder()
+// OperationMultiply 乘法策略类
+type OperationMultiply struct {
+}
+
+// NewOperationMultiply 实例化乘法策略类
+func NewOperationMultiply() *OperationMultiply {
+	return &OperationMultiply{}
+}
+
+// DoOperation 乘法策略类执行操作
+func (multi *OperationMultiply) DoOperation(num1, num2 int) int {
+	return num1 * num2
+}
+
+// Context 策略的使用类
+type Context struct {
+	strategy Strategy
+}
+
+// NewContext 实例化策略使用类
+func NewContext(str Strategy) *Context {
+	return &Context{strategy: str}
+}
+
+// ExecuteStrategy 执行当前策略
+func (c *Context) ExecuteStrategy(num1, num2 int) int {
+	return c.strategy.DoOperation(num1, num2)
+
 }
