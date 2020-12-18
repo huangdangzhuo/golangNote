@@ -254,7 +254,7 @@ func main() {
 	secret := "73u4qv497d1tg0jz0w531kmbnpi31hmu"
 	timestamp := strconv.FormatInt(time.Now().UnixNano()/1e6, 10)
 
-	body := "{\"startTime\":\"2020-10-20 00:00:00\",\"endTime\":\"2020-10-20 23:59:59\"}"
+	body := "{\"startTime\":\"2020-12-08 00:00:00\",\"endTime\":\"2020-12-08 23:59:59\"}"
 	fmt.Println(timestamp)
 	//fmt.Println(string(bodyStr))
 	str := fmt.Sprintf("%v%v%v%v", appID, timestamp, body, secret)

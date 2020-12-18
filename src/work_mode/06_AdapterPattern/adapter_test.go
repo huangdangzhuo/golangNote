@@ -5,6 +5,13 @@ import (
 )
 
 func Test(t *testing.T) {
-	t.Run("测试Taco套餐:", OrderTacoMeal)
-	t.Run("测试牛肉汉堡套餐:", OrderBeefBurger)
+	t.Run("audio test:", AudioPlayerTest)
+}
+
+func AudioPlayerTest(t *testing.T){
+	audio := NewAudioPlayer()
+	audio.Play("mp4","yellow.mp4")
+	audio.Play("rmvb","yellow.rmvb")
+	audio.Play("mp3","yellow.mp3")
+	audio.Play("avi","yellow.avi")
 }

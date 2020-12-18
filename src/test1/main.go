@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"time"
 )
 
 //
@@ -303,14 +303,14 @@ type OrderHouseImages []*OrderHouseImage
 //}
 
 func main()  {
-	dd := ""
-	aa := "6"
+		now := time.Now()
 
-	id,_ := strconv.ParseFloat(dd,64)
-	ia,_ := strconv.ParseFloat(aa,64)
+		offset := int(time.Monday - now.Weekday())
+		if offset > 0 {
+			offset = -6
+		}
 
-	ff:=strconv.FormatFloat(id-ia, 'f', 2, 64)
+		//weekStartDate := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset)
+	fmt.Println( now.Format("01月02日"))
 
-
-	fmt.Printf("%v",ff)
 }
