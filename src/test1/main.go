@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
 //
 ///*
@@ -303,14 +300,17 @@ type OrderHouseImages []*OrderHouseImage
 //}
 
 func main()  {
-		now := time.Now()
+	//	now := time.Now()
+	//
+	//	offset := int(time.Monday - now.Weekday())
+	//	if offset > 0 {
+	//		offset = -6
+	//	}
+	//
+	//	//weekStartDate := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset)
+	//fmt.Println( now.Format("01月02日"))
 
-		offset := int(time.Monday - now.Weekday())
-		if offset > 0 {
-			offset = -6
-		}
-
-		//weekStartDate := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset)
-	fmt.Println( now.Format("01月02日"))
+	var a bool
+	fmt.Println(a)
 
 }
